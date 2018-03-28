@@ -1,0 +1,39 @@
+(define semre "^(v|<|<=|=|!=|>=|>|\^|~)?(\d+)\.(\d+)\.(\d+)(?:-([0-9a-zA-Z.-]+))?(?:\+([0-9a-zA-Z.-]+))?$")
+(define issem
+    (fn (n)
+      (do
+       (rmatch semre n)    
+      )
+    )
+)
+
+(define semcmp
+    (fn (a b)
+    (do
+        (cond 
+            (! (issem a)) -1 
+            (cond (! (issem b)) -1
+                (do
+                    (define ma (rfind semre a))
+                    (define mb (rfind semre b))
+                    
+                    (define majora (parse (lget ma 2)))
+                    (define majorb (parse (lget mb 2)))
+
+                    (define minora (parse (lget ma 3)))
+                    (define minorb (parse (lget mb 3)))
+
+                    (define patcha (parse (lget ma 4)))
+                    (define patchb (parse (lget mb 4)))
+
+                    (cond (! (== majora majorb)) (< majora majorb)
+                        (cond (! (== minora minorb)) (< minora minorb)
+                            (cond (! (== patcha patchb)) (< patcha patchb) 1)
+                        )
+                    )
+                )
+            )
+        )
+      )
+    )
+)

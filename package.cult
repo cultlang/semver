@@ -1,0 +1,8 @@
+(define package "cultlang/semver")
+(define author "clarkrinker")
+(define repo "https://github.com/cultlang/semver")
+(define issues "https://github.com/cultlang/semver/issues")
+(define license "https://github.com/cultlang/semver/blob/master/LICENSE")
+(define readme "https://github.com/cultlang/semver/blob/master/README.md")
+(define version "0.1.0")
+(define description "Semantic Versioning Implmentation")
